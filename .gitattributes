@@ -1,0 +1,20 @@
+# Exclude build output
+build/** linguist-vendored
+app/build/** linguist-vendored
+
+# Exclude Gradle files
+.gradle/** linguist-vendored
+
+# Exclude IDE files
+.idea/** linguist-vendored
+*.iml linguist-vendored
+
+# Exclude local properties
+local.properties linguist-vendored
+
+# Exclude generated resources
+*.log linguist-vendored
+captures/** linguist-vendored
+
+# Optional: exclude test reports or other generated html
+app/build/reports/** linguist-vendored
