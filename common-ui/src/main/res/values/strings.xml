@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NavigationApp</string>
+    <string name="start">Start</string>
+
+    <string name="go_back">Go back</string>
+    <string name="more">More</string>
+</resources>

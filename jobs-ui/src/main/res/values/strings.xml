@@ -1,0 +1,5 @@
+<resources>
+    <string name="title_activity_jobs">JobsActivity</string>
+
+    <string name="task_detail_screen_title">Task</string>
+</resources>
