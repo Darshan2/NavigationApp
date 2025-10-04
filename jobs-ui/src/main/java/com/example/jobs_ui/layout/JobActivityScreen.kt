@@ -16,7 +16,7 @@ import com.example.jobs_ui.ui_models.TaskUiModel
 import com.example.jobs_ui.viewmodel.TasksViewModel
 
 @Composable
-fun JobsActivityScreen(modifier: Modifier = Modifier, openTask: (TaskUiModel) -> Unit) {
+fun TaskListScreen(modifier: Modifier = Modifier, openTask: (TaskUiModel) -> Unit) {
     val tasksViewModel = hiltViewModel<TasksViewModel>()
     val pageState by tasksViewModel.pageStatus.collectAsState()
 
@@ -24,7 +24,7 @@ fun JobsActivityScreen(modifier: Modifier = Modifier, openTask: (TaskUiModel) ->
         tasksViewModel.loadNextPage()
     }
 
-    JobsActivityScreen(
+    TaskListScreen(
         modifier = modifier,
         pageState = pageState,
         loadMore = tasksViewModel::loadNextPage,
@@ -34,7 +34,7 @@ fun JobsActivityScreen(modifier: Modifier = Modifier, openTask: (TaskUiModel) ->
 }
 
 @Composable
-fun JobsActivityScreen(
+fun TaskListScreen(
     modifier: Modifier = Modifier,
     pageState: PaginationState<List<TaskUiModel>>,
     loadMore: (() -> Unit),
@@ -69,8 +69,8 @@ fun JobsActivityScreen(
 
 @Preview
 @Composable
-private fun JobsActivityErrorState() {
-    JobsActivityScreen(
+private fun TaskListScreenErrorState() {
+    TaskListScreen(
         pageState = PaginationState.Error(0, Exception("Something went wrong")),
         loadMore = {},
         openTask = {},
@@ -80,8 +80,8 @@ private fun JobsActivityErrorState() {
 
 @Preview
 @Composable
-private fun JobsActivityLoadingState() {
-    JobsActivityScreen(
+private fun TaskListScreenLoadingState() {
+    TaskListScreen(
         pageState = PaginationState.LoadingInitial,
         loadMore = {},
         openTask = {},
@@ -91,8 +91,8 @@ private fun JobsActivityLoadingState() {
 
 @Preview
 @Composable
-private fun JobsActivitySuccessState() {
-    JobsActivityScreen(
+private fun TaskListScreenSuccessState() {
+    TaskListScreen(
         pageState = PaginationState.Success(dummyTaskList()),
         loadMore = {},
         openTask = {},
@@ -102,8 +102,8 @@ private fun JobsActivitySuccessState() {
 
 @Preview
 @Composable
-private fun JobsActivityLoadMoreState() {
-    JobsActivityScreen(
+private fun TaskListScreenLoadMoreState() {
+    TaskListScreen(
         pageState = PaginationState.LoadingMore(dummyTaskList()),
         loadMore = {},
         openTask = {},

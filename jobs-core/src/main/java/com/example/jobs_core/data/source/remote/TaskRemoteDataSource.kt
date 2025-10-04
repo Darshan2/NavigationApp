@@ -1,6 +1,7 @@
 package com.example.jobs_core.data.source.remote
 
 import com.example.jobs_core.data.model.TaskDataModel
+import com.example.jobs_core.data.model.TaskSubmissionModel
 import com.example.jobs_core.data.source.TasksDataSource
 import com.example.jobs_core.data.source.remote.apis.TasksApiService
 import kotlinx.coroutines.delay
@@ -39,6 +40,10 @@ internal class TaskRemoteDataSource @Inject constructor(
         return TaskDataModel(taskId, "Task $taskId", "Description $taskId")
 
 //        return tasksApiService.loadTask(taskId)
+    }
+
+    override suspend fun createTask(taskSubmissionModel: TaskSubmissionModel) {
+        TODO("Not yet implemented")
     }
 
 }

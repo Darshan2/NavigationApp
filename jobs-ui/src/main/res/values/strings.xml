@@ -2,4 +2,16 @@
     <string name="title_activity_jobs">JobsActivity</string>
 
     <string name="task_detail_screen_title">Task</string>
+
+    <string name="error_min_limit">Minimum %1$d characters required</string>
+    <string name="error_max_limit">Text can\'t be more than %1$d characters</string>
+    <string name="error_blank">Please fill the field</string>
+
+    <string name="label_title">Title</string>
+    <string name="label_description">Description</string>
+    <string name="label_place">Place</string>
+    <string name="label_due_date">Due date</string>
+
+    <string name="btn_text_submit">Submit</string>
+    <string name="cd_add_task">Add task</string>
 </resources>

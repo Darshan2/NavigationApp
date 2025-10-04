@@ -2,6 +2,7 @@ package com.example.jobs_core.domain.usecases
 
 import com.example.common_core.utils.Result
 import com.example.jobs_core.data.model.TaskDataModel
+import com.example.jobs_core.data.model.TaskSubmissionModel
 import com.example.jobs_core.domain.repositories.TasksRepo
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -16,5 +17,9 @@ class TaskUseCase @Inject constructor(
 
     suspend fun loadTask(taskId: Int): Flow<Result<TaskDataModel>> {
         return taskRepository.getTask(taskId)
+    }
+
+    suspend fun createTask(taskSubmissionModel: TaskSubmissionModel): Flow<Result<Unit>> {
+        return taskRepository.createTask(taskSubmissionModel)
     }
 }

@@ -1,6 +1,14 @@
 package com.example.navigationapp.ui.layouts
 
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -11,12 +19,16 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -39,13 +51,15 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.common_ui.layout.NavigationAppTopAppBar
 import com.example.common_ui.theme.NavigationAppTheme
+import com.example.jobs_ui.R
+import com.example.navigationapp.ui.activities.CreateTaskDestination
 import com.example.navigationapp.ui.activities.HomeDestination
-import com.example.navigationapp.ui.activities.JobDetailsDestination
-import com.example.navigationapp.ui.activities.JobsDestination
 import com.example.navigationapp.ui.activities.MainDestination
-import com.example.navigationapp.ui.activities.mainBottomNavDestinations
+import com.example.navigationapp.ui.activities.mainDestinations
+import com.example.navigationapp.ui.activities.mainTabDestinations
 import com.example.navigationapp.ui.layouts.extensions.navigateSingleTopTo
 
+const val BOTTOM_NAV_HIDE_ANIMATION_DURATION = 600 //IN MS
 
 @Composable
 fun MainActivityScreen(modifier: Modifier = Modifier) {
@@ -56,24 +70,26 @@ fun MainActivityScreen(modifier: Modifier = Modifier) {
     val currentDestination by remember {
         derivedStateOf {
             val route = currentBackStackEntry.value?.destination?.route
-            if(route == JobDetailsDestination.routeWithArgs) {
-                JobsDestination
-            } else {
-                mainBottomNavDestinations.find { it.route == route } ?: HomeDestination
-            }
+            mainDestinations.find { it.route == route || it.routeWithArgs == route} ?: HomeDestination
         }
     }
 
-    val currentDestinationIndex by remember {
+    val currentTabIndex by remember {
         derivedStateOf {
-            mainBottomNavDestinations.indexOf(currentDestination)
+            mainTabDestinations.indexOf(currentDestination)
+        }
+    }
+
+    val showFabAndBottomBar by remember {
+        derivedStateOf {
+            currentTabIndex > -1
         }
     }
 
     Scaffold(
         modifier = modifier,
         topBar = {
-            NavigationAppTopAppBar(modifier = modifier,
+            NavigationAppTopAppBar(modifier = Modifier,
                 titleResId = currentDestination.titleResId,
                 showUpBtn = currentDestination != HomeDestination,
                 onUpBtnClick = {
@@ -81,15 +97,53 @@ fun MainActivityScreen(modifier: Modifier = Modifier) {
                 }
             )
         },
+        floatingActionButton = {
+            MainFAB(
+                modifier = Modifier,
+                isVisible = showFabAndBottomBar,
+                onFabClick = {
+                    navController.navigate(CreateTaskDestination.route)
+                }
+            )
+        },
         bottomBar = {
-            MainBottomNavigationBar(modifier = modifier,
+            MainBottomNavigationBar(
+                modifier = Modifier,
+                isVisible = showFabAndBottomBar,
                 navController = navController,
-                selectedTabIndex = currentDestinationIndex
+                selectedTabIndex = currentTabIndex
             )
         }
     ) { contentPadding ->
-        MainNavHost(navController = navController,
-            modifier = modifier.padding(contentPadding)
+        MainNavHost(
+            navController = navController,
+            modifier = Modifier.padding(contentPadding)
+        )
+    }
+}
+
+@Composable
+fun MainBottomNavigationBar(
+    modifier: Modifier = Modifier,
+    navController: NavHostController,
+    selectedTabIndex: Int,
+    isVisible: Boolean
+) {
+    AnimatedVisibility(
+        visible = isVisible,
+        enter = slideInVertically(
+            animationSpec = tween(durationMillis = BOTTOM_NAV_HIDE_ANIMATION_DURATION),
+            initialOffsetY = { fullHeight -> fullHeight }
+        ),
+        exit = slideOutVertically(
+            animationSpec = tween(durationMillis = BOTTOM_NAV_HIDE_ANIMATION_DURATION),
+            targetOffsetY = { fullHeight -> fullHeight }
+        )
+    ) {
+        MainBottomNavigationBar(
+            modifier = modifier,
+            navController = navController,
+            selectedTabIndex = selectedTabIndex
         )
     }
 }
@@ -112,7 +166,7 @@ fun MainBottomNavigationBar(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceAround
         ) {
-            for((index, navDestination) in mainBottomNavDestinations.withIndex()) {
+            for((index, navDestination) in mainTabDestinations.withIndex()) {
                 MainBottomNavigationItem(
                     modifier = Modifier.weight(1f),
                     mainDestination = navDestination,
@@ -143,13 +197,15 @@ fun MainBottomNavigationItem(
 
 
     val backGround = if(isSelected) {
-        Modifier.border(
-            shape = itemShape,
-            border = BorderStroke(2.dp, color = MaterialTheme.colorScheme.inversePrimary)
-        ).background(
-            shape = itemShape,
-            color =  MaterialTheme.colorScheme.secondaryContainer
-        )
+        Modifier
+            .border(
+                shape = itemShape,
+                border = BorderStroke(2.dp, color = MaterialTheme.colorScheme.inversePrimary)
+            )
+            .background(
+                shape = itemShape,
+                color = MaterialTheme.colorScheme.secondaryContainer
+            )
     } else {
         Modifier
     }
@@ -166,7 +222,7 @@ fun MainBottomNavigationItem(
     ) {
         Icon(modifier = Modifier.size(20.dp),
             tint = contentColor,
-            imageVector = mainDestination.icon,
+            imageVector = mainDestination.icon ?: Icons.Default.Add,
             contentDescription = mainDestination.route
         )
         Spacer(Modifier
@@ -180,6 +236,32 @@ fun MainBottomNavigationItem(
             text = stringResource(id = mainDestination.titleResId),
             maxLines = 2
         )
+    }
+}
+
+@Composable
+fun MainFAB(modifier: Modifier = Modifier, isVisible: Boolean, onFabClick: () -> Unit) {
+    AnimatedVisibility(
+        modifier = modifier,
+        visible = isVisible,
+        enter = scaleIn(
+            animationSpec = spring(
+                dampingRatio = 0.6f, // Lower numbers = more bounce
+                stiffness = 200f      // Higher numbers = faster
+            )
+        ),
+        exit = scaleOut()
+    ) {
+        FloatingActionButton(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+            onClick = onFabClick
+        ) {
+            Icon(
+                imageVector = Icons.Default.Add,
+                contentDescription = stringResource(id = R.string.cd_add_task) // Add to strings.xml
+            )
+        }
     }
 }
 

@@ -6,8 +6,12 @@
     <string name="retarget_notification_body">Notification body</string>
 
     <string name="home_tab_title">Home</string>>
-    <string name="job_tab_title">Job</string>
+    <string name="task_tab_title">Tasks</string>
     <string name="profile_tab_title">Profile</string>
-    <string name="go_back">Go back</string>
-    <string name="more">More</string>
+
+    <string name="task_detail_destination_title">Task Details</string>
+    <string name="task_creation_destination_title">Add task</string>
+
+    <string name="cd_go_back">Go back</string>
+    <string name="cd_more">More</string>
 </resources>

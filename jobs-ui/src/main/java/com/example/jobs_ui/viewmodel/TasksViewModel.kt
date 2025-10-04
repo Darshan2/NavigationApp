@@ -5,7 +5,7 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.common_core.utils.DEFAULT_JOB_ID
+import com.example.common_core.utils.DEFAULT_TASK_ID
 import com.example.common_core.utils.Result
 import com.example.common_core.utils.toStateFlow
 import com.example.common_core.utils.transformData
@@ -107,7 +107,7 @@ class TasksViewModel @Inject constructor(
 
 
     val taskLoadStatus: StateFlow<Result<TaskUiModel>> =
-        savedStateHandle.getStateFlow<Int>(TASK_ID_KEY, DEFAULT_JOB_ID)
+        savedStateHandle.getStateFlow<Int>(TASK_ID_KEY, DEFAULT_TASK_ID)
             .flatMapLatest { taskId ->
                 taskUseCase.loadTask(taskId).transformData { taskDataModel ->
                     taskDataModel.toUiModel()
