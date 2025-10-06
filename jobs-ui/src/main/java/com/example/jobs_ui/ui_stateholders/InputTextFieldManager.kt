@@ -64,6 +64,8 @@ class InputTextFieldManager(
     }
 
     override fun isValid(): Boolean {
+        if(!isRequired) return true
+
         return textState.text.let {
             it.isNotBlank() && it.length >= minChars && it.length <= maxChars
         }

@@ -20,7 +20,14 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.ui)
 
+//    testImplementation(libs.bundles.junit.jupiter)
+//    testImplementation(libs.junit.jupiter.engine)
     testImplementation(libs.junit)
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+
+//tasks.withType<Test> {
+//    useJUnitPlatform()
+//}
