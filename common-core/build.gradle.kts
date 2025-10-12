@@ -7,7 +7,8 @@ android {
 }
 
 dependencies {
-    //Retrofit
     implementation(libs.bundles.retrofit)
+
+    testImplementation(libs.bundles.junit4.test)
 }
 

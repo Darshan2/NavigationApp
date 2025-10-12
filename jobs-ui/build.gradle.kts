@@ -13,6 +13,8 @@ dependencies {
     implementation(project(":common-ui"))
     implementation(project(":common-core"))
 
+    testImplementation(project(":test-utils"))
+
     implementation(libs.bundles.androidx.lifecycle.core)
 
     implementation(libs.androidx.appcompat)
@@ -22,7 +24,7 @@ dependencies {
 
 //    testImplementation(libs.bundles.junit.jupiter)
 //    testImplementation(libs.junit.jupiter.engine)
-    testImplementation(libs.junit)
+    testImplementation(libs.bundles.junit4.test)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

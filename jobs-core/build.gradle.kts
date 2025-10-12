@@ -8,6 +8,7 @@ android {
 
 dependencies {
     implementation(project(":common-core"))
+    testImplementation(project(":test-utils"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -16,7 +17,8 @@ dependencies {
     //Retrofit
     implementation(libs.bundles.retrofit)
 
-    testImplementation(libs.junit)
+    testImplementation(libs.bundles.junit4.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(kotlin("test"))
 }

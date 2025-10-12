@@ -6,9 +6,12 @@ javaxInject = "1"
 kotlin = "2.0.0"
 androidDesugarJdkLibs = "2.1.4"
 coreKtx = "1.16.0"
-junit = "4.13.2"
-junitVersion = "1.2.1"
+
+junit4 = "4.13.2"
+corutineTest = "1.10.2"
+androidxJunit = "1.3.0"
 espressoCore = "3.7.0"
+
 lifecycleRuntimeKtx = "2.9.2"
 activityCompose = "1.10.1"
 composeBom = "2024.04.01"
@@ -24,19 +27,27 @@ navigation = "2.9.4"
 kotlin-serialization = "1.7.3"
 hilt-extension = "1.3.0"
 junitJupiterVerson = "5.10.2"
+turbine = "1.2.1"
 
 [libraries]
 #junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junitJupiterVerson" }
 #junit-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junitJupiterVerson" }
 #junit-jupiter-params = { group = "org.junit.jupiter", name = "junit-jupiter-params", version.ref = "junitJupiterVerson" }
 
+# Unit Testing related
+junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
+corutine-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "corutineTest"}
+# To test kotlin flows
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine"}
 
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+# Instrumentation and Androidx testing related
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-lifecycle-viewmodel-ktx = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-livedata-core = { group = "androidx.lifecycle", name = "lifecycle-livedata-core-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 
 # Don't remove these dependencies these are being accessed from build logics
@@ -116,6 +127,7 @@ androidx-lifecycle-core = [
     "androidx-lifecycle-viewmodel-ktx"
 ]
 #junit-jupiter = ["junit-jupiter-api", "junit-jupiter-params"]
+junit4-test = ["junit4", "corutine-test", "turbine"]
 
 
 

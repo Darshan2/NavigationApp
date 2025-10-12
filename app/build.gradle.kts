@@ -56,7 +56,7 @@ dependencies {
 
 
     //---------------- Unit test ---------------------------------------------------
-    testImplementation(libs.junit)
+    testImplementation(libs.junit4)
 
     // ---------------- Instrumentation test ---------------------------------------
     androidTestImplementation(libs.androidx.junit)
