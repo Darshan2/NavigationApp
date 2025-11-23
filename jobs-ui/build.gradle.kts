@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.jobs_ui"
+    namespace = "com.example.jobs.ui"
 }
 
 dependencies {

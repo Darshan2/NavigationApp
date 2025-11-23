@@ -1,11 +1,11 @@
 package com.example.navigationapp.data.repository
 
-import com.example.common_core.utils.Result
+import com.example.common.core.utils.Result
 import com.example.navigationapp.data.model.NewsPostUi
-import com.example.common_core.utils.safeApiCall
+import com.example.common.core.utils.safeApiCall
 import com.example.navigationapp.data.source.NewsDataSource
-import com.example.common_core.di.qualifiers.NewsLocalDataSource
-import com.example.common_core.di.qualifiers.NewsRemoteDataSource
+import com.example.common.core.di.qualifiers.NewsLocalDataSource
+import com.example.common.core.di.qualifiers.NewsRemoteDataSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

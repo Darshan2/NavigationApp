@@ -1,6 +1,6 @@
 package com.example.navigationapp.di
 
-import com.example.common_core.di.qualifiers.NewsRetrofitClient
+import com.example.common.core.di.qualifiers.NewsRetrofitClient
 import com.example.navigationapp.data.source.remote.NewsApiService
 import dagger.Module
 import dagger.Provides

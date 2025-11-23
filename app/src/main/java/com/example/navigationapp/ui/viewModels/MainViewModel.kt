@@ -2,7 +2,7 @@ package com.example.navigationapp.ui.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.common_core.utils.toStateFlow
+import com.example.common.core.utils.toStateFlow
 import com.example.navigationapp.data.repository.NewsBaseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
     <application>
-        <activity
-            android:name=".activity.JobsActivity"
+        <!-- BroadcastReceiver that handles alarm events -->
+        <receiver
+            android:name=".framework.AlarmChimeReceiver"
             android:exported="false"
-            android:label="@string/title_activity_jobs"
-            android:theme="@style/Theme.NavigationApp" />
+            android:enabled="true" />
     </application>
 
 </manifest>

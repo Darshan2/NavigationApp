@@ -14,4 +14,7 @@
 
     <string name="cd_go_back">Go back</string>
     <string name="cd_more">More</string>
+    <string name="cd_add_task">Add task</string>
+
+    <string name="alarm_title">Alarm</string>
 </resources>

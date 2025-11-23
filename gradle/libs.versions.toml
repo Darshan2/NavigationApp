@@ -7,18 +7,28 @@ kotlin = "2.0.0"
 androidDesugarJdkLibs = "2.1.4"
 coreKtx = "1.16.0"
 
+#Testing libraries
 junit4 = "4.13.2"
 corutineTest = "1.10.2"
 androidxJunit = "1.3.0"
 espressoCore = "3.7.0"
+mockK = "1.14.6"
+junitJupiterVerson = "5.10.2"
+turbine = "1.2.1"
+uiautomator = "2.2.0"
+benchmarkMacroJunit4 = "1.2.0-beta01"
 
+#Libraries
 lifecycleRuntimeKtx = "2.9.2"
 activityCompose = "1.10.1"
 composeBom = "2024.04.01"
+corutineAndroid = "1.10.2"
 retrofit = "3.0.0"
 hilt = "2.56.2"
 ksp = "2.0.0-1.0.22"
 room = "2.7.2"
+paging = "3.3.6"
+pagingCompse = "3.4.0-alpha04"
 lifecycleService = "2.9.2"
 material = "1.12.0"
 appcompat = "1.7.1"
@@ -26,31 +36,10 @@ jetbrainsKotlinJvm = "2.0.0"
 navigation = "2.9.4"
 kotlin-serialization = "1.7.3"
 hilt-extension = "1.3.0"
-junitJupiterVerson = "5.10.2"
-turbine = "1.2.1"
+androidx-baselineprofile = "1.3.4"
 
 [libraries]
-#junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junitJupiterVerson" }
-#junit-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junitJupiterVerson" }
-#junit-jupiter-params = { group = "org.junit.jupiter", name = "junit-jupiter-params", version.ref = "junitJupiterVerson" }
-
-# Unit Testing related
-junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
-corutine-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "corutineTest"}
-# To test kotlin flows
-turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine"}
-
-# Instrumentation and Androidx testing related
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
-androidx-lifecycle-viewmodel-ktx = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
-androidx-lifecycle-livedata-core = { group = "androidx.lifecycle", name = "lifecycle-livedata-core-ktx", version.ref = "lifecycleRuntimeKtx" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
-
-# Don't remove these dependencies these are being accessed from build logics
+# ---------- Don't remove these dependencies these are being accessed from build logics ------
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
@@ -59,27 +48,14 @@ androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-te
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
 
-retrofit-main = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
-retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
-
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt"}
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt"}
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-extension" }
 
-#... Navigation component
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation"}
 navigation-testing = { group = "androidx.navigation", name = "navigation-testing", version.ref = "navigation"}
 kotlin-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlin-serialization"}
-
-
-# ... room
-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" } # For Coroutines & Flow support
-room-testing = { group = "androidx.room", name = "room-testing", version.ref = "room" }
-androidx-lifecycle-service = { group = "androidx.lifecycle", name = "lifecycle-service", version.ref = "lifecycleService" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" } # For testing
+# ---------- Don't remove these dependencies these are being accessed from build logics ------
 
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
@@ -88,6 +64,49 @@ compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
+
+# ---------------------------------  Testing related: START -----------------------
+#junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junitJupiterVerson" }
+#junit-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junitJupiterVerson" }
+#junit-jupiter-params = { group = "org.junit.jupiter", name = "junit-jupiter-params", version.ref = "junitJupiterVerson" }
+
+junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
+corutine-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "corutineTest"}
+mockK = { group = "io.mockk", name = "mockk", version.ref = "mockK" }
+# To test kotlin flows
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine"}
+
+# Instrumentation and Androidx testing related
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "uiautomator" }
+androidx-benchmark-macro-junit4 = { group = "androidx.benchmark", name = "benchmark-macro-junit4", version.ref = "benchmarkMacroJunit4" }
+# ----------------------------------  Testing related: END -----------------------
+
+
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "corutineAndroid" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-viewmodel-ktx = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-livedata-core = { group = "androidx.lifecycle", name = "lifecycle-livedata-core-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+
+paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging"}
+paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "pagingCompse"}
+
+retrofit-main = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+
+# ... room
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" } # For Coroutines & Flow support
+room-testing = { group = "androidx.room", name = "room-testing", version.ref = "room" }
+
+androidx-lifecycle-service = { group = "androidx.lifecycle", name = "lifecycle-service", version.ref = "lifecycleService" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" } # For testing
+
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 
@@ -103,6 +122,8 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt"}
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+androidx-baselineprofile = { id = "androidx.baselineprofile", version.ref = "androidx-baselineprofile" }
+
 
 # Plugins defined by this project
 navigation-android-application = { id = "navigation.android.application" }
@@ -116,6 +137,7 @@ navigation-android-test = { id = "navigation.android.test" }
 navigation-hilt = { id = "navigation.hilt" }
 navigation-jvm-library = { id = "navigation.jvm.library" }
 navigation-android-navigation = { id = "navigation.android.navigation" }
+android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
 
 
 [bundles]
@@ -124,8 +146,10 @@ retrofit = ["retrofit-main", "retrofit-converter-gson"]
 androidx-lifecycle-core = [
     "androidx-core-ktx",
     "androidx-lifecycle-runtime-ktx",
-    "androidx-lifecycle-viewmodel-ktx"
+    "androidx-lifecycle-viewmodel-ktx",
+    "kotlinx-coroutines-android"
 ]
+paging3 = ["paging-runtime", "paging-compose"]
 #junit-jupiter = ["junit-jupiter-api", "junit-jupiter-params"]
 junit4-test = ["junit4", "corutine-test", "turbine"]
 

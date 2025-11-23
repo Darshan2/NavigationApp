@@ -1,7 +1,7 @@
 package com.example.navigationapp.di
 
-import com.example.common_core.di.qualifiers.NewsLocalDataSource
-import com.example.common_core.di.qualifiers.NewsRemoteDataSource
+import com.example.common.core.di.qualifiers.NewsLocalDataSource
+import com.example.common.core.di.qualifiers.NewsRemoteDataSource
 import com.example.navigationapp.data.repository.NewsBaseRepository
 import com.example.navigationapp.data.repository.NewsRepository
 import com.example.navigationapp.data.source.NewsDataSource

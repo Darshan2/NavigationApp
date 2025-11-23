@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.jobs_core"
+    namespace = "com.example.jobs.core"
 }
 
 dependencies {
@@ -14,9 +14,15 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
 
-    //Retrofit
     implementation(libs.bundles.retrofit)
 
+    //Room
+    implementation(libs.bundles.room)
+    ksp(libs.room.compiler)
+
+    implementation(libs.paging.runtime)
+
+    //Testing
     testImplementation(libs.bundles.junit4.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

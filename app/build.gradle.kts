@@ -24,6 +24,14 @@ android {
                 "proguard-rules.pro"
             )
         }
+
+        create("benchmark") {
+            initWith(buildTypes.getByName("release"))
+            signingConfig = signingConfigs.getByName("debug")
+            matchingFallbacks += listOf("release")
+            isDebuggable = false
+            proguardFiles("baseline-profile-rules.pro")
+        }
     }
 
     defaultConfig {
@@ -41,6 +49,7 @@ dependencies {
     implementation(project(":common-core"))
     implementation(project(":common-ui"))
     implementation(project(":jobs-ui"))
+    implementation(project(":jobs-core"))
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.material)
@@ -48,9 +57,10 @@ dependencies {
     implementation(libs.bundles.androidx.lifecycle.core)
     implementation(libs.bundles.retrofit)
 
+    implementation(libs.androidx.lifecycle.service)
+
     //Room
     implementation(libs.bundles.room)
-    implementation(libs.androidx.lifecycle.service)
     ksp(libs.room.compiler) // Use ksp for Room's annotation processor
 
 

@@ -1,6 +1,6 @@
 package com.example.navigationapp.data.repository
 
-import com.example.common_core.utils.Result
+import com.example.common.core.utils.Result
 import com.example.navigationapp.data.model.NewsPostUi
 import kotlinx.coroutines.flow.Flow
 

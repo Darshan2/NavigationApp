@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.common_core"
+    namespace = "com.example.common.core"
 }
 
 dependencies {

@@ -10,7 +10,7 @@ import androidx.navigation.NavDeepLink
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import androidx.navigation.navDeepLink
-import com.example.common_core.utils.DEFAULT_TASK_ID
+import com.example.common.core.utils.DEFAULT_TASK_ID
 import com.example.navigationapp.R
 
 interface MainDestination {
