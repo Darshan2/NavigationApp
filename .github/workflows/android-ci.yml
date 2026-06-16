@@ -1,4 +1,4 @@
-name: Andrroid CI
+name: Android CI
 
 on:
   push:
@@ -39,6 +39,10 @@ jobs:
     needs: lint
     runs-on: ubuntu-latest
 
+    permissions:
+      checks: write
+      contents: read
+
     steps:
       - name: Check out the repository
         uses: actions/checkout@v6
@@ -60,3 +64,12 @@ jobs:
           name: android-unit-test-report
           path: "**/build/reports/tests/testDebugUnitTest/" # Directs to the HTML test report folder
           retention-days: 7
+
+      # METHOD 3 IMPLEMENTATION: Render results directly in GitHub UI
+      - name: Publish Test Report to GitHub
+        uses: dorny/test-reporter@v1
+        if: always() # Ensures reports are generated even when tests fail!
+        with:
+          name: Android Unit Test Results
+          path: "**/build/test-results/testDebugUnitTest/*.xml" # Points to raw XML files
+          reporter: java-junit                                  # Tells the action to look for JUnit format
