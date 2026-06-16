@@ -6,6 +6,7 @@ javaxInject = "1"
 kotlin = "2.0.0"
 androidDesugarJdkLibs = "2.1.4"
 coreKtx = "1.16.0"
+kover = "0.8.3" # For test coverage
 
 #Testing libraries
 junit4 = "4.13.2"
@@ -138,6 +139,7 @@ navigation-hilt = { id = "navigation.hilt" }
 navigation-jvm-library = { id = "navigation.jvm.library" }
 navigation-android-navigation = { id = "navigation.android.navigation" }
 android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
+kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 
 
 [bundles]

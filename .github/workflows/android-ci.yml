@@ -65,7 +65,7 @@ jobs:
           path: "**/build/reports/tests/testDebugUnitTest/" # Directs to the HTML test report folder
           retention-days: 7
 
-      # METHOD 3 IMPLEMENTATION: Render results directly in GitHub UI
+      #Render results directly in GitHub UI
       - name: Publish Test Report to GitHub
         uses: dorny/test-reporter@v1
         if: always() # Ensures reports are generated even when tests fail!
@@ -73,3 +73,14 @@ jobs:
           name: Android Unit Test Results
           path: "**/build/test-results/testDebugUnitTest/*.xml" # Points to raw XML files
           reporter: java-junit                                  # Tells the action to look for JUnit format
+
+      - name: Run All Tests & Aggregate Coverage
+        run: ./gradlew koverHtmlReport koverXmlReport
+
+      - name: Upload Aggregated Coverage Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-coverage-report
+          path: "build/reports/kover/html/"
+          retention-days: 7

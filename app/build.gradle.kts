@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.navigation.hilt)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.navigation.android.navigation)
+    alias(libs.plugins.kotlinx.kover)
 }
 
 android {

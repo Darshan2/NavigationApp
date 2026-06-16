@@ -16,6 +16,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             apply(plugin = "org.jetbrains.kotlin.android")
             apply(plugin = "kotlin-parcelize")
             apply(plugin = "navigation.hilt")
+            apply(plugin = "org.jetbrains.kotlinx.kover")
 
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             extensions.configure<LibraryExtension> {
