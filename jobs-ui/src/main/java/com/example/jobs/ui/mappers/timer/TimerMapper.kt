@@ -12,7 +12,8 @@ fun Timer.toUiModel() = TimerUiModel(
 fun TimerUiModel.toDomainModel() = Timer(
     id = id,
     name = name,
-    timerIntervals = timerIntervals.toDomainModel()
+    timerIntervals = timerIntervals.toDomainModel(),
+    updatedOnInMillis = 0
 )
 
 fun List<Timer>.toUiModel() = map { it.toUiModel() }

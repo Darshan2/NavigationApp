@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "5d9edce7af6f5b605a731df2bbb8828e",
+    "identityHash": "4b2a6b18524427c7b56e0da8e2660b6e",
     "entities": [
       {
         "tableName": "news_posts",
@@ -57,11 +57,95 @@
             "id"
           ]
         }
+      },
+      {
+        "tableName": "timers",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `updated_on` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updateOnInMillis",
+            "columnName": "updated_on",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "timer_intervals",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `timer_id` INTEGER NOT NULL, `interval_in_mins` INTEGER NOT NULL, FOREIGN KEY(`timer_id`) REFERENCES `timers`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timerId",
+            "columnName": "timer_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "intervalInMins",
+            "columnName": "interval_in_mins",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_timer_intervals_timer_id",
+            "unique": false,
+            "columnNames": [
+              "timer_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_timer_intervals_timer_id` ON `${TABLE_NAME}` (`timer_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "timers",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "timer_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5d9edce7af6f5b605a731df2bbb8828e')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4b2a6b18524427c7b56e0da8e2660b6e')"
     ]
   }
 }

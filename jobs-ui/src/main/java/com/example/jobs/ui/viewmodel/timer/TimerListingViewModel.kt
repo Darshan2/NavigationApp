@@ -42,7 +42,7 @@ class TimerListingViewModel @Inject constructor(
 
     private val existingTimerStatus = _loadTimersListTrigger
         .flatMapLatest {
-            timerUseCase.getTimers().mapListData { it -> it.toUiModel() }
+            timerUseCase.getTimerIntervals(7).mapListData { it -> it.toUiModel() }
         }.catch {
             emit(Result.Error(it))
         }
@@ -52,7 +52,7 @@ class TimerListingViewModel @Inject constructor(
             timerUseCase.deleteTimer(timer.id).mapData { it -> timer }
         }.onEach { result ->
             if(result is Result.Success) {
-                alarmChimeScheduler.ca(result.data.toDomainModel())
+//                alarmChimeScheduler.ca(result.data.toDomainModel())
             }
         }
         .catch {

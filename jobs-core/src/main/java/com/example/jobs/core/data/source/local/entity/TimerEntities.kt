@@ -23,7 +23,7 @@ data class TimerEntity(
             onDelete = ForeignKey.CASCADE
         )
     ],
-    indices = [Index("group_id")]
+    indices = [Index("timer_id")]
 )
 data class TimerIntervalEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,

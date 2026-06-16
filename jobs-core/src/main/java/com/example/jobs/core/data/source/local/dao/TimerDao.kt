@@ -15,7 +15,7 @@ abstract class TimerDao {
     protected abstract suspend fun createTimer(timerEntity: TimerEntity): Long
 
     @Insert
-    protected abstract suspend fun createTimerIntervals(timerInterval: List<TimerIntervalEntity>): Long
+    protected abstract suspend fun createTimerIntervals(timerInterval: List<TimerIntervalEntity>):  List<Long>
 
     @Transaction
     open suspend fun createTimer(timerName: String, timerIntervals: List<TimerIntervalEntity>) {

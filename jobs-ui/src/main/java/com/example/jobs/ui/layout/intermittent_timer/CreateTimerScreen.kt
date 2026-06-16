@@ -12,11 +12,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.common.ui.layout.NavigationAppTopAppBar
-import com.example.navigationapp.R
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.example.jobs.R
+import com.example.jobs.ui.R
 import java.time.LocalTime
 
 
@@ -28,7 +27,7 @@ fun CreateTimerScreen(modifier: Modifier = Modifier) {
         modifier = modifier,
         topBar = {
             NavigationAppTopAppBar(modifier = Modifier,
-                titleResId = R.string.alarm_title,
+                titleResId = R.string.label_place,
                 showUpBtn = true,
                 onUpBtnClick = {
                     onBackPressedDispatcher?.onBackPressed()
@@ -36,13 +35,13 @@ fun CreateTimerScreen(modifier: Modifier = Modifier) {
             )
         },
     ) { contentPadding ->
-        CreateTimerScreen(Modifier.padding(contentPadding))
+        CreateTimerScreenLayout(Modifier.padding(contentPadding))
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CreateTimerScreen(modifier: Modifier = Modifier, ) {
+fun CreateTimerScreenLayout(modifier: Modifier = Modifier) {
     var currentTime by remember {
         mutableStateOf(LocalTime.now())
     }
