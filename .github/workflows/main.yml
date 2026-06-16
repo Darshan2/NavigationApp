@@ -15,11 +15,17 @@ jobs:
     - name: Check out the repository
       uses: actions/checkout@v6
 
+    - name: Run Android Lint
+      run: ./gradlew lintDebug
+
+    - name: Upload Lint Report Artifact
+      uses: actions/upload-artifact@v4
+      if: always() # CRITICAL: Ensures the report uploads even if the lint step fails
+      with:
+          name: android-lint-report
+          path:
+            "**/build/reports/lint-results-debug.html"
+          retention-days: 7
+
     - name: Run a one line script
       run: echo Hello word!
-
-    - name: Run multi line script
-      run: 
-        echo Add a action below
-        echo test and deploy the app
-    
