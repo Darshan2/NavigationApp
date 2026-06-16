@@ -1,6 +1,7 @@
 package com.example.jobs.ui.ui_stateholders
 
 import com.example.common.ui.layout.ui_stateholders.UiText
+import com.example.jobs.ui.uistateholders.InputTextFieldManager
 import org.junit.Before
 import org.junit.Test
 import org.junit.Assert.assertEquals

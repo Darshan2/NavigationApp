@@ -2,9 +2,9 @@ package com.example.jobs.core.data.repositoryimpls
 
 import app.cash.turbine.test
 import com.example.common.core.utils.Result
-import com.example.jobs.data.model.TaskDataModel
-import com.example.jobs.data.model.TaskSubmissionModel
 import com.example.jobs.core.data.source.FakeTasksDataSourceBuilder
+import com.example.jobs.core.data.source.remote.model.TaskDataModel
+import com.example.jobs.core.data.source.remote.model.TaskSubmissionModel
 import com.example.test_utils.MainDispatcherRule
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*

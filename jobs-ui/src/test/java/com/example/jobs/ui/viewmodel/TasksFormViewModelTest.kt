@@ -5,8 +5,8 @@ import org.junit.Test
 
 class TasksFormViewModelTest {
 
-    @Test
-    fun test() {
-        val a = MutableLiveData<String>("hi")
-    }
+//    @Test
+//    fun test() {
+//        val a = MutableLiveData<String>("hi")
+//    }
 }

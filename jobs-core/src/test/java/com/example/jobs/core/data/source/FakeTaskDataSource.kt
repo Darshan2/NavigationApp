@@ -1,8 +1,7 @@
 package com.example.jobs.core.data.source
 
-import com.example.jobs.data.model.TaskDataModel
-import com.example.jobs.data.model.TaskSubmissionModel
-import com.example.jobs.data.source.TasksDataSource
+import com.example.jobs.core.data.source.remote.model.TaskDataModel
+import com.example.jobs.core.data.source.remote.model.TaskSubmissionModel
 
 
 class FakeTasksDataSourceBuilder {
