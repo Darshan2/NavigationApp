@@ -16,6 +16,17 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    lint {
+        // YES: Fail the build if there are actual ERRORS
+        abortOnError = true
+
+        // NO: Do not turn warnings into errors. Keep them as warnings.
+        warningsAsErrors = false
+
+        // OPTIONAL: Ignore text/translation warnings if your app is single-language
+        disable.add("MissingTranslation")
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
