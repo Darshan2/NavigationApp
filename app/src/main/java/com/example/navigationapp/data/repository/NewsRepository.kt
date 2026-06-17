@@ -17,13 +17,13 @@ class NewsRepository @Inject constructor(
     override val pageSie: Int
         get() = 10
 
-    override suspend fun getNewsList(pageNum: Int): Flow<Result<List<NewsPostUi>?>> {
+    override fun getNewsList(pageNum: Int): Flow<Result<List<NewsPostUi>?>> {
         return safeApiCall {
             remoteDataSource.getNewsList(pageNum, pageSie)
         }
     }
 
-    override suspend fun getNewsPost(postId: Int): Flow<Result<NewsPostUi?>> {
+    override fun getNewsPost(postId: Int): Flow<Result<NewsPostUi?>> {
         return safeApiCall {
             remoteDataSource.getNewsPost(postId)
         }

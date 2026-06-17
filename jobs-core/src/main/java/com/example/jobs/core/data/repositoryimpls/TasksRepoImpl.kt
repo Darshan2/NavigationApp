@@ -18,13 +18,13 @@ class TasksRepoImpl @Inject constructor(
         return tasksDataSource.loadTasks(pageNo, pageSize) ?: mutableListOf()
     }
 
-    override suspend fun getTask(taskId: Int): Flow<Result<TaskDataModel>> {
+    override fun getTask(taskId: Int): Flow<Result<TaskDataModel>> {
         return safeApiCall {
             tasksDataSource.loadTask(taskId) ?: throw Exception("Task not found")
         }
     }
 
-    override suspend fun createTask(taskSubmissionModel: TaskSubmissionModel): Flow<Result<Unit>> {
+    override fun createTask(taskSubmissionModel: TaskSubmissionModel): Flow<Result<Unit>> {
         return safeApiCall {
             tasksDataSource.createTask(taskSubmissionModel)
         }

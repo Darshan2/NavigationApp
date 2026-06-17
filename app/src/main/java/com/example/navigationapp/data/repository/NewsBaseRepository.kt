@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 interface NewsBaseRepository {
     val pageSie: Int
 
-    suspend fun getNewsList(pageNum: Int): Flow<Result<List<NewsPostUi>?>>
+    fun getNewsList(pageNum: Int): Flow<Result<List<NewsPostUi>?>>
 
-    suspend fun getNewsPost(postId: Int): Flow<Result<NewsPostUi?>>
+    fun getNewsPost(postId: Int): Flow<Result<NewsPostUi?>>
 }

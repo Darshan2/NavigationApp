@@ -19,6 +19,14 @@ class AndroidApplicationConventionPlugin: Plugin<Project> {
             extensions.configure<ApplicationExtension> {
                 configureKotlinAndroid(this, libs)
                 defaultConfig.targetSdk = 35
+                lint {
+                    abortOnError = false
+                    htmlReport = true // Keeps your human-readable artifact
+                    xmlReport = true // CRITICAL: Generates the machine-readable XML for Sonar
+
+                    // NO: Do not turn warnings into errors. Keep them as warnings.
+                    warningsAsErrors = false
+                }
             }
         }
     }
