@@ -26,7 +26,7 @@ jobs:
       run: ./gradlew lintDebug
 
     - name: Upload Lint Report Artifact
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v4
       if: always() # CRITICAL: Ensures the report uploads even if the lint step fails
       with:
           name: android-lint-report
@@ -77,10 +77,44 @@ jobs:
       - name: Run All Tests & Aggregate Coverage
         run: ./gradlew koverHtmlReport koverXmlReport
 
-      - name: Upload Aggregated Coverage Report
+      - name: Upload Aggregated Coverage XML for Sonar
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: test-coverage-report
-          path: "build/reports/kover/html/"
-          retention-days: 7
+            name: kover-xml-snapshot
+            path: "build/reports/kover/report.xml" # Target the explicit XML report
+            retention-days: 1
+
+  sonarCloud:
+      name: Run SonarQube analysis
+      needs: unit-test
+      runs-on: ubuntu-latest
+
+      permissions:
+        pull-requests: write
+        contents: read
+
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0  # Required for blame info & new code detection
+
+        - name: Set up JDK 21
+          uses: actions/setup-java@v4
+          with:
+              distribution: 'zulu'
+              java-version: '21.0.6' # Runs the build engine on Java 21
+              cache: 'gradle'       # Accelerates build speeds
+
+        - name: Download Kover Report Snapshot
+          uses: actions/download-artifact@v4
+          with:
+            name: kover-xml-snapshot
+            path: build/reports/kover/
+
+        - name: SonarCloud Scan
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # For PR decoration
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          run: ./gradlew sonar

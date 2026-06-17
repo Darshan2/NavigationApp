@@ -7,6 +7,7 @@ kotlin = "2.0.0"
 androidDesugarJdkLibs = "2.1.4"
 coreKtx = "1.16.0"
 kover = "0.8.3" # For test coverage
+sonarQube = "7.3.1.8318"
 
 #Testing libraries
 junit4 = "4.13.2"
@@ -140,6 +141,7 @@ navigation-jvm-library = { id = "navigation.jvm.library" }
 navigation-android-navigation = { id = "navigation.android.navigation" }
 android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
 kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
+sonarqube = { id = "org.sonarqube", version.ref = "sonarQube" }
 
 
 [bundles]
