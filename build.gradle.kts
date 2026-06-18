@@ -33,14 +33,13 @@ kover {
 
 sonar {
     properties {
-        // Replace with your real unique key from SonarCloud
         property("sonar.projectKey", "Darshan2_NavigationApp")
         property("sonar.projectName", "Navigation Android App")
         property("sonar.organization", "darshan2") // Your organization key
 
         property("sonar.host.url", "https://sonarcloud.io")
         property("sonar.coverage.jacoco.xmlReportPaths", "${project.rootDir}/build/reports/kover/report.xml")
-        property("sonar.androidLint.reportPaths", "**/build/reports/lint-results-debug.xml")
+        property("sonar.androidLint.reportPaths", "build/reports/lint-results-debug.xml")
         property("sonar.exclusions", "**/build/**, **/*.xml, **/AndroidManifest.xml, **/*_HiltComponents.kt")
     }
 }

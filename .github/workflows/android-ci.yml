@@ -118,6 +118,7 @@ jobs:
           uses: actions/download-artifact@v4
           with:
               name: android-lint-reports-snapshot
+              path: ./
 
         - name: SonarCloud Scan
           env:
